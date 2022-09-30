@@ -3,8 +3,10 @@ import java.util.ArrayList;
 public class Trem{
 
     private int identificadorTrem;
-    private ArrayList<Locomotiva> listaLocomotiva = new ArrayList<Locomotiva>();
-    private ArrayList<Vagao> listaVagao = new ArrayList<Vagao>();
+    private static ArrayList<Locomotiva> listaLocomotiva = new ArrayList<Locomotiva>();
+    private static ArrayList<Vagao> listaVagao = new ArrayList<Vagao>();
+    private int tamanhoListaLocomotiva = listaLocomotiva.size();
+    private int tamanhoListaVagao = listaVagao.size();
   
     //Este patio P é o pátio onde esse trem que está sendo criado irá estar
     public Trem(int identificadorTrem){
@@ -27,10 +29,21 @@ public class Trem{
     public ArrayList<Vagao> getListaVagao() {
         return listaVagao;
     }
+    public int getTamanhoListaLocomotiva() {
+        return tamanhoListaLocomotiva;
+    }
+    public int getTamanhoListaVagao() {
+        return tamanhoListaVagao;
+    }
 
     public void engataLocomotiva(int idLocomotiva){
-        this.listaLocomotiva.add(Locomotiva.procuraLocomotiva(idLocomotiva));
+        Trem.listaLocomotiva.add(Locomotiva.procuraLocomotiva(idLocomotiva));
         GaragemLocomotiva.getListaGarageLocomotivas().remove(Locomotiva.procuraLocomotiva(idLocomotiva));
+    }
+
+    public void engataVagao(int idVagao){
+        Trem.listaVagao.add(Vagao.procuraVagao(idVagao));
+        GaragemVagao.getListaGaragemVagao().remove(Vagao.procuraVagao(idVagao));
     }
 
     public static Trem procuraTrem(int idTrem){

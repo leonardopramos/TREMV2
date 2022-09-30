@@ -1,19 +1,37 @@
-public class Vagao extends Trem{
+public class Vagao{
 
     private int identificadorVagao;
     private double capacidadeMaxCarga;
-    private Trem tremAtual = null;
 
-    public Vagao(int identificadorTrem, int identificadorVagao, double capacidadeMaxCarga, Trem tremAtual) {
-        super(identificadorTrem);
+    public Vagao(int identificadorVagao, double capacidadeMaxCarga, Trem tremAtual) {
         this.identificadorVagao = identificadorVagao;
         this.capacidadeMaxCarga = capacidadeMaxCarga;
-        this.tremAtual = tremAtual;
         tremAtual.getListaVagao().add(this);
+    }
+    public Vagao(int identificadorVagao, double capacidadeMaxCarga, GaragemVagao gV) {
+        this.identificadorVagao = identificadorVagao;
+        this.capacidadeMaxCarga = capacidadeMaxCarga;
+        GaragemVagao.getListaGaragemVagao().add(this);
+    }
 
-        if (tremAtual.getIdentificadorTrem() != identificadorTrem){
-            System.out.println("Identificador de trem não coincide com o identificador do trem passado por parâmetro.");
-            identificadorTrem = tremAtual.getIdentificadorTrem();
+    public int getIdentificadorVagao() {
+        return identificadorVagao;
+    }
+    public double getCapacidadeMaxCarga() {
+        return capacidadeMaxCarga;
+    }
+    public static Vagao procuraVagao(int idVagao){
+        for(int i = 0; i < GaragemVagao.getListaGaragemVagao().size(); i++){
+            if(GaragemVagao.getListaGaragemVagao().get(i).getIdentificadorVagao() == idVagao){
+                return GaragemVagao.getListaGaragemVagao().get(i);
+            }
         }
+        return null;
+    }
+    @Override
+    public String toString() {
+        String aux = " ";
+        aux += "Vagao: " + getIdentificadorVagao() + "\n";
+        return aux;
     }
 }
