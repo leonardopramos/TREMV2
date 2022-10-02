@@ -34,7 +34,7 @@ public class Menu {
                 case 1:
                     System.out.println("Para criar um trem, indique o identificador dele: ");
                     int identificadorTrem = sc.nextInt();
-                    Trem t = new Trem(identificadorTrem);
+                    Trem t = new Trem(identificadorTrem, "sim");
                     System.out.println("***Lista de locomotivas na garagem***");
                     g.imprimeLocomotivasNaGaragem();
                     System.out.println("Selecione a Locomotiva desejada: ");
@@ -79,17 +79,8 @@ public class Menu {
                                 continue;
                             case 3:
                                 //Remove ultimo elemento do trem
-                                //Laço: remover todos vagoes ate serem 0, apos isso remover todas locomotivas (deixando somente a obrigatoria)
-                                if(Trem.procuraTrem(identificador).getListaVagao().size() == 0){
-                                    System.out.println("Número máximo de vagões retirado.");
-                                }
-                                if(Trem.procuraTrem(identificador).getListaLocomotiva().size() == 1){
-                                    System.out.println("Número máximo de locomotivas retirado.");
-                                }
-                                if(Trem.procuraTrem(identificador).getListaVagao().size() > 0){
-                                    Trem.procuraTrem(identificador).getListaVagao().remove(Trem.procuraTrem(identificador).getListaVagao().size() - 1);
-                                } else if(Trem.procuraTrem(identificador).getListaLocomotiva().size() > 1){
-                                    Trem.procuraTrem(identificador).getListaLocomotiva().remove(Trem.procuraTrem(identificador).getListaLocomotiva().size() - 1);
+                                if(Trem.procuraTrem(identificador).getLista().size() > 1){
+                                    Trem.procuraTrem(identificador).getLista().remove(Trem.procuraTrem(identificador).getLista().size() - 1);
                                 }
                                 System.out.println("Remoção do último elemento do trem concluída.");
                                 continue;
@@ -117,12 +108,12 @@ public class Menu {
 
                     // Após receber o trem desejado, todos seus vagões e locomotivas serão
                     // direcionados à suas garagens
-
-                    for (int i = 0; i < Trem.procuraTrem(idTrem).getListaLocomotiva().size(); i++) {
-                        GaragemLocomotiva.getListaGarageLocomotivas().add(Trem.procuraTrem(idTrem).getListaLocomotiva().get(i));
-                    }
-                    for (int i = 0; i < Trem.procuraTrem(idTrem).getListaVagao().size(); i++) {
-                        GaragemVagao.getListaGaragemVagao().add(Trem.procuraTrem(idTrem).getListaVagao().get(i));
+                    for(int i = 0; i < Trem.procuraTrem(idTrem).getLista().size(); i++){
+                        if(Trem.procuraTrem(idTrem).getLista().get(i) instanceof Locomotiva){
+                            GaragemLocomotiva.getListaGarageLocomotivas().add((Locomotiva) Trem.procuraTrem(idTrem).getLista().get(i));
+                        } else if(Trem.procuraTrem(idTrem).getLista().get(i) instanceof Vagao){
+                            GaragemVagao.getListaGaragemVagao().add((Vagao) Trem.procuraTrem(idTrem).getLista().get(i));
+                        }
                     }
                     // Por fim, remove o trem do pátio
                     Patio.getTrensNoPatio().remove(Trem.procuraTrem(idTrem));
