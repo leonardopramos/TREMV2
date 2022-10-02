@@ -79,6 +79,18 @@ public class Menu {
                                 continue;
                             case 3:
                                 //Remove ultimo elemento do trem
+                                //Laço: remover todos vagoes ate serem 0, apos isso remover todas locomotivas (deixando somente a obrigatoria)
+                                if(Trem.procuraTrem(identificador).getListaVagao().size() == 0){
+                                    System.out.println("Número máximo de vagões retirado.");
+                                }
+                                if(Trem.procuraTrem(identificador).getListaLocomotiva().size() == 1){
+                                    System.out.println("Número máximo de locomotivas retirado.");
+                                }
+                                if(Trem.procuraTrem(identificador).getListaVagao().size() > 0){
+                                    Trem.procuraTrem(identificador).getListaVagao().remove(Trem.procuraTrem(identificador).getListaVagao().size() - 1);
+                                } else if(Trem.procuraTrem(identificador).getListaLocomotiva().size() > 1){
+                                    Trem.procuraTrem(identificador).getListaLocomotiva().remove(Trem.procuraTrem(identificador).getListaLocomotiva().size() - 1);
+                                }
                                 System.out.println("Remoção do último elemento do trem concluída.");
                                 continue;
                             case 4:
