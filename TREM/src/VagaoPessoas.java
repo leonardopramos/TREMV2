@@ -20,9 +20,9 @@ public class VagaoPessoas extends Vagao{
     public double getCapacidadeMaxCarga() {
         return maxPessoas;
     }
-    public static Vagao procuraVagao(int idVagao){
+    public static Vagao procuraVagaoPessoas(int idVagaoPessoas){
         for(int i = 0; i < GaragemVagao.getListaGaragemVagao().size(); i++){
-            if(GaragemVagao.getListaGaragemVagao().get(i).getIdentificadorVagao() == idVagao){
+            if(GaragemVagao.getListaGaragemVagao().get(i).getIdentificadorVagao() == idVagaoPessoas){
                 return GaragemVagao.getListaGaragemVagao().get(i);
             }
         }
