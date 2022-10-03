@@ -1,16 +1,16 @@
 public class VagaoPessoas extends Vagao{
 
     private int identificadorVagao;
-    private double maxPessoas;
+    private double maxPesoPessoas;
 
-    public VagaoPessoas(int identificadorVagao, double maxPessoas, Trem tremAtual) {
-        super(identificadorVagao, maxPessoas, tremAtual);
+    public VagaoPessoas(int identificadorVagao, double maxPesoPessoas, Trem tremAtual) {
+        super(identificadorVagao, maxPesoPessoas, tremAtual);
         this.identificadorVagao = identificadorVagao;
-        this.maxPessoas = maxPessoas;
+        this.maxPesoPessoas = maxPesoPessoas;
         tremAtual.getLista().add(this);
     }
-    public VagaoPessoas(int identificadorVagao, double maxPessoas, GaragemVagao gV) {
-        super(identificadorVagao, maxPessoas, gV);
+    public VagaoPessoas(int identificadorVagao, double maxPesoPessoas, GaragemVagao gV) {
+        super(identificadorVagao, maxPesoPessoas, gV);
         GaragemVagao.getListaGaragemVagao().add(this);
     }
 
@@ -18,7 +18,7 @@ public class VagaoPessoas extends Vagao{
         return identificadorVagao;
     }
     public double getCapacidadeMaxCarga() {
-        return maxPessoas;
+        return maxPesoPessoas;
     }
     public static Vagao procuraVagaoPessoas(int idVagaoPessoas){
         for(int i = 0; i < GaragemVagao.getListaGaragemVagao().size(); i++){

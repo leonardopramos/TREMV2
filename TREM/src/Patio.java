@@ -7,6 +7,7 @@ public class Patio {
     public static ArrayList<Trem> getTrensNoPatio() {
         return trensNoPatio;
     }
+    
     public static void imprimeTrensCriados(){
         for(int i = 0; i < trensNoPatio.size(); i++){
             System.out.println(trensNoPatio.get(i));

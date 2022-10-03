@@ -14,11 +14,18 @@ public class Menu {
     Locomotiva lc4 = new Locomotiva(4, 9999, 100, g);
     Locomotiva lc5 = new Locomotiva(5, 9999, 100, g);
     // Vagoes para exemplo de uso
-    Vagao v1 = new Vagao(1, 9999, gv);
-    Vagao v2 = new Vagao(2, 9999, gv);
-    Vagao v3 = new Vagao(3, 9999, gv);
-    Vagao v4 = new Vagao(4, 9999, gv);
-    Vagao v5 = new Vagao(5, 9999, gv);
+    Vagao v1 = new Vagao(1, 100, gv);
+    Vagao v2 = new Vagao(2, 100, gv);
+    Vagao v3 = new Vagao(3, 100, gv);
+    Vagao v4 = new Vagao(4, 100, gv);
+    Vagao v5 = new Vagao(5, 100, gv);
+
+    //Todos os valores de peso estão em toneladas
+    VagaoPessoas vp1 = new VagaoPessoas(1, 14, gv);
+    VagaoPessoas vp2 = new VagaoPessoas(1, 14, gv);
+    VagaoPessoas vp3 = new VagaoPessoas(1, 14, gv);
+    VagaoPessoas vp4 = new VagaoPessoas(1, 14, gv);
+    VagaoPessoas vp5 = new VagaoPessoas(1, 14, gv);
 
     public void menuTrem() {
         for (;;) {
@@ -108,6 +115,7 @@ public class Menu {
 
                     // Após receber o trem desejado, todos seus vagões e locomotivas serão
                     // direcionados à suas garagens
+
                     for(int i = 0; i < Trem.procuraTrem(idTrem).getLista().size(); i++){
                         if(Trem.procuraTrem(idTrem).getLista().get(i) instanceof Locomotiva){
                             GaragemLocomotiva.getListaGarageLocomotivas().add((Locomotiva) Trem.procuraTrem(idTrem).getLista().get(i));

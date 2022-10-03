@@ -24,9 +24,11 @@ public class Trem{
             System.out.print(lista.get(i));
         }
     }
+
     public ArrayList<Trem> getLista() {
         return lista;
     }
+
     public int getTamanhoDaLista() {
         return tamanhoDaLista;
     }
@@ -36,9 +38,126 @@ public class Trem{
         GaragemLocomotiva.getListaGarageLocomotivas().remove(Locomotiva.procuraLocomotiva(idLocomotiva));
     }
 
-    public void engataVagao(int idVagao){
+    public int calculaNumeroMaxVagoes(){
+        double max = 0;
+        double fator = 1.0;
+
+
+        for(int i = 0; i < lista.size(); i ++){
+            if(Trem.lista.get(i) instanceof Locomotiva){
+                Locomotiva loc = (Locomotiva) Trem.lista.get(i);
+
+                max = loc.getNumMaxVagoes()*fator;
+                fator = fator*0.9;
+            }
+        }
+        return (int) max;
+    }
+
+    public double pesoVagoes(){
+        double peso = 0.0;
+        for(int i = 0; i <lista.size(); i ++){
+            if(Trem.lista.get(i) instanceof Vagao){
+                Vagao vag = (Vagao) Trem.lista.get(i); 
+                peso += vag.getCapacidadeMaxCarga();
+            }
+        }
+        return peso;
+    }
+
+    public double calculaPesoMax(){
+        double max = 0.0;
+        double aux = 1.0;
+
+        for(int i = 0; i < lista.size(); i ++){
+            if(Trem.lista.get(i) instanceof Locomotiva){
+                Locomotiva loc = (Locomotiva) Trem.lista.get(i);
+                max += loc.getPesoMAX()*aux;
+                aux = aux*0.9;
+            }
+        }
+        return max;
+    }
+
+
+    public static int quantidadeLocomotivas(){
+        int q = 0;
+        for(int  i= 0; i < lista.size(); i ++){
+            if(Trem.lista.get(i) instanceof Locomotiva){
+                q ++;
+            }
+        }
+        return q;
+    }
+
+    public boolean engataVagao(int idVagao){
+        if(quantidadeLocomotivas() >= calculaNumeroMaxVagoes()){
+            return false;
+        }
+
+        if(pesoVagoes() >= calculaNumeroMaxVagoes()){
+            return false;
+        }
+
         Trem.lista.add(Vagao.procuraVagao(idVagao));
         GaragemVagao.getListaGaragemVagao().remove(Vagao.procuraVagao(idVagao));
+        return true;
+    }
+
+    //
+    public int calculaNumeroMaxVagoesPessoas(){
+        double max = 0;
+        double fator = 1.0;
+
+
+        for(int i = 0; i < lista.size(); i ++){
+            if(Trem.lista.get(i) instanceof Locomotiva){
+                Locomotiva loc = (Locomotiva) Trem.lista.get(i);
+
+                max = loc.getPesoMaxPessoas()*fator;
+                fator = fator*0.9;
+            }
+        }
+        return (int) max;
+    }
+
+    public double pesoVagoesPessoas(){
+        double peso = 0.0;
+        for(int i = 0; i <lista.size(); i ++){
+            if(Trem.lista.get(i) instanceof VagaoPessoas){
+                VagaoPessoas vag = (VagaoPessoas) Trem.lista.get(i); 
+                peso += vag.getCapacidadeMaxCarga();
+            }
+        }
+        return peso;
+    }
+
+    public double calculaPesoMaxVagaoPessoas(){
+        double max = 0.0;
+        double aux = 1.0;
+
+        for(int i = 0; i < lista.size(); i ++){
+            if(Trem.lista.get(i) instanceof Locomotiva){
+                Locomotiva loc = (Locomotiva) Trem.lista.get(i);
+                max += loc.getPesoMaxPessoas()*aux;
+                aux = aux*0.9;
+            }
+        }
+        return max;
+    }
+
+    public boolean engataVagaoPessoas(int idVagaoPessoas){
+        if(quantidadeLocomotivas() >= calculaNumeroMaxVagoesPessoas()){
+            return false;
+        }
+
+        if(pesoVagoesPessoas() >= calculaNumeroMaxVagoesPessoas()){
+            return false;
+        }
+
+        Trem.lista.add(VagaoPessoas.procuraVagao(idVagaoPessoas));
+        GaragemVagao.getListaGaragemVagao().remove(Vagao.procuraVagao(idVagaoPessoas));
+        return true;
     }
 
     public static Trem procuraTrem(int idTrem){
@@ -49,6 +168,7 @@ public class Trem{
         }
         return null;
     }
+
     @Override
     public String toString() {
         String aux = " ";

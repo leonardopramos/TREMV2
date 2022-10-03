@@ -2,6 +2,7 @@ public class Locomotiva extends Trem{
     
     private int identificadorLocomotiva;
     private double pesoMAX;
+    private double pesoMaxPessoas;
     private int numMaxVagoes;
 
     //Dois construtores, 1 para adicionar a locomotiva diretamente para o trem desejado, outro para criar a locomotiva e envia-la para a garagem de locomotivas.
@@ -12,6 +13,7 @@ public class Locomotiva extends Trem{
         this.numMaxVagoes = numMaxVagoes;
         tremAtual.getLista().add(this);
     }
+    
     public Locomotiva(int identificadorLocomotiva, double pesoMAX, int numMaxVagoes, GaragemLocomotiva g){
         super(identificadorLocomotiva, "não");
         this.identificadorLocomotiva = identificadorLocomotiva;
@@ -26,6 +28,10 @@ public class Locomotiva extends Trem{
     
     public double getPesoMAX() {
         return pesoMAX;
+    }
+
+    public double getPesoMaxPessoas(){
+        return pesoMaxPessoas;
     }
 
     public int getNumMaxVagoes() {
