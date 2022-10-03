@@ -8,9 +8,20 @@ public class GaragemVagao{
         return listaGaragemVagao;
     }
 
-    public void imprimeLocomotivasNaGaragem(){
+    public void imprimeVagaoNaGaragem(){
         for(int i = 0; i < listaGaragemVagao.size(); i++){
-            System.out.println(listaGaragemVagao.get(i));
+            if(listaGaragemVagao.get(i) instanceof Vagao){
+                System.out.println(listaGaragemVagao.get(i));
+            }
         }
     }
+
+    public void imprimeVagaoPessoas(){
+        for(int i = 0; i < listaGaragemVagao.size(); i++){
+            if(listaGaragemVagao.get(i) instanceof VagaoPessoas){
+                System.out.println(listaGaragemVagao.get(i));
+            }
+        }
+    }
+
 }

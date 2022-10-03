@@ -21,11 +21,11 @@ public class Menu {
     Vagao v5 = new Vagao(5, 100, gv);
 
     //Todos os valores de peso estão em toneladas
-    VagaoPessoas vp1 = new VagaoPessoas(1, 14, gv);
-    VagaoPessoas vp2 = new VagaoPessoas(1, 14, gv);
-    VagaoPessoas vp3 = new VagaoPessoas(1, 14, gv);
-    VagaoPessoas vp4 = new VagaoPessoas(1, 14, gv);
-    VagaoPessoas vp5 = new VagaoPessoas(1, 14, gv);
+    VagaoPessoas vp1 = new VagaoPessoas(6, 14, gv);
+    VagaoPessoas vp2 = new VagaoPessoas(7, 14, gv);
+    VagaoPessoas vp3 = new VagaoPessoas(8, 14, gv);
+    VagaoPessoas vp4 = new VagaoPessoas(9, 14, gv);
+    VagaoPessoas vp5 = new VagaoPessoas(10, 14, gv);
 
     public void menuTrem() {
         for (;;) {
@@ -50,6 +50,7 @@ public class Menu {
                     continue;
                 case 2:
                     // Editar trem
+                    p.imprimeTrensCriados();
                     for (;;) {
                         System.out.println("Indique o trem que deseja editar: ");
                         int identificador = sc.nextInt();
@@ -76,7 +77,7 @@ public class Menu {
                                 continue;
                             case 2:
                                 System.out.println("*******Lista de Vagões disponíveis: ********");
-                                gv.imprimeLocomotivasNaGaragem();
+                                gv.imprimeVagaoNaGaragem();
                                 System.out.println("Selecione o vagao desejado para engatar no: " + Trem.procuraTrem(identificador));
                                 int vagaoInsere = sc.nextInt();
 

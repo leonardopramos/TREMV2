@@ -31,7 +31,7 @@ public class VagaoPessoas extends Vagao{
     @Override
     public String toString() {
         String aux = " ";
-        aux += "Vagao: " + getIdentificadorVagao() + "\n";
+        aux += "Vagao Pessoa: " + getIdentificadorVagao() + "\n";
         return aux;
     }
 }
