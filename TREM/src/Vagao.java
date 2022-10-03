@@ -9,6 +9,7 @@ public class Vagao extends Trem{
         this.capacidadeMaxCarga = capacidadeMaxCarga;
         tremAtual.getLista().add(this);
     }
+    
     public Vagao(int identificadorVagao, double capacidadeMaxCarga, GaragemVagao gV) {
         super(identificadorVagao, "Não");
         this.identificadorVagao = identificadorVagao;
@@ -19,9 +20,11 @@ public class Vagao extends Trem{
     public int getIdentificadorVagao() {
         return identificadorVagao;
     }
+
     public double getCapacidadeMaxCarga() {
         return capacidadeMaxCarga;
     }
+
     public static Vagao procuraVagao(int idVagao){
         for(int i = 0; i < GaragemVagao.getListaGaragemVagao().size(); i++){
             if(GaragemVagao.getListaGaragemVagao().get(i).getIdentificadorVagao() == idVagao){

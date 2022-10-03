@@ -8,6 +8,11 @@ public class GaragemVagao{
         return listaGaragemVagao;
     }
 
+    public boolean vagaoEntra(Vagao v){
+        listaGaragemVagao.add(v);
+        return true;
+    }
+
     public void imprimeVagaoNaGaragem(){
         for(int i = 0; i < listaGaragemVagao.size(); i++){
             if(listaGaragemVagao.get(i) instanceof Vagao){

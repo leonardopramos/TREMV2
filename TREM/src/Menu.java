@@ -51,9 +51,9 @@ public class Menu {
                 case 2:
                     // Editar trem
                     p.imprimeTrensCriados();
+                    System.out.println("Indique o trem que deseja editar: ");
+                    int identificador = sc.nextInt();
                     for (;;) {
-                        System.out.println("Indique o trem que deseja editar: ");
-                        int identificador = sc.nextInt();
                         System.out.println("1. inserir Locomotiva");
                         System.out.println("2. Inserir Vagao");
                         System.out.println("3. Remover último elemento do trem");
@@ -87,15 +87,31 @@ public class Menu {
                                 continue;
                             case 3:
                                 //Remove ultimo elemento do trem
-                                if(Trem.procuraTrem(identificador).getLista().size() > 1){
-                                    Trem.procuraTrem(identificador).getLista().remove(Trem.procuraTrem(identificador).getLista().size() - 1);
+                                int tam = Trem.procuraTrem(identificador).getLista().size();
+                                
+                                if(tam > 1){
+                                    if(Trem.procuraTrem(identificador).getLista().get(tam-1) instanceof Locomotiva){
+                                        Locomotiva l = (Locomotiva) Trem.procuraTrem(identificador).getLista().remove(Trem.procuraTrem(identificador).getLista().size() - 1);
+                                        g.locomotivaEntra(l);
+                                    }
+                                    if(Trem.procuraTrem(identificador).getLista().get(tam-1) instanceof Vagao){
+                                        Vagao v = (Vagao) Trem.procuraTrem(identificador).getLista().remove(Trem.procuraTrem(identificador).getLista().size() - 1);
+                                        gv.vagaoEntra(v);
+                                    }
+                                    if(Trem.procuraTrem(identificador).getLista().get(tam-1) instanceof VagaoPessoas){
+                                        VagaoPessoas vp = (VagaoPessoas) Trem.procuraTrem(identificador).getLista().remove(Trem.procuraTrem(identificador).getLista().size() - 1);
+                                        gv.vagaoEntra(vp);
+                                    }
                                 }
+
                                 System.out.println("Remoção do último elemento do trem concluída.");
                                 continue;
                             case 4:
+
                                 System.out.println("Locomotivas livres");
                                 g.imprimeLocomotivasNaGaragem();
                                 continue;
+
                             case 5:
                                 System.out.println("Voltao ao menu principal...");
                                 break;
@@ -134,6 +150,5 @@ public class Menu {
             }
             break;
         }
-
     }
 }
