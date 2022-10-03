@@ -37,6 +37,7 @@ public class Menu {
             System.out.println("5. Fim.");
             System.out.print("Digite a opção desejada: ");
             int opcao = sc.nextInt();
+
             switch (opcao) {
                 case 1:
                     System.out.println("Para criar um trem, indique o identificador dele: ");
@@ -58,7 +59,8 @@ public class Menu {
                         System.out.println("2. Inserir Vagao");
                         System.out.println("3. Remover último elemento do trem");
                         System.out.println("4. Listar locomotivas livres");
-                        System.out.println("5. Encerrar Edição do trem");
+                        System.out.println("5. Listar Vagoes Livres");
+                        System.out.println("6. Encerrar Edição do trem");
 
                         System.out.println("Digite a opção desejada: ");
                         int opcao1 = sc.nextInt();
@@ -93,14 +95,17 @@ public class Menu {
                                     if(Trem.procuraTrem(identificador).getLista().get(tam-1) instanceof Locomotiva){
                                         Locomotiva l = (Locomotiva) Trem.procuraTrem(identificador).getLista().remove(Trem.procuraTrem(identificador).getLista().size() - 1);
                                         g.locomotivaEntra(l);
+                                        continue;
                                     }
                                     if(Trem.procuraTrem(identificador).getLista().get(tam-1) instanceof Vagao){
                                         Vagao v = (Vagao) Trem.procuraTrem(identificador).getLista().remove(Trem.procuraTrem(identificador).getLista().size() - 1);
                                         gv.vagaoEntra(v);
+                                        continue;
                                     }
                                     if(Trem.procuraTrem(identificador).getLista().get(tam-1) instanceof VagaoPessoas){
                                         VagaoPessoas vp = (VagaoPessoas) Trem.procuraTrem(identificador).getLista().remove(Trem.procuraTrem(identificador).getLista().size() - 1);
                                         gv.vagaoEntra(vp);
+                                        continue;
                                     }
                                 }
 
@@ -113,6 +118,12 @@ public class Menu {
                                 continue;
 
                             case 5:
+
+                                System.out.println("Vagoes Livres");
+                                gv.imprimeVagaoNaGaragem();
+                                // gv.imprimeVagaoPessoas();
+                                continue;
+                            case 6:
                                 System.out.println("Voltao ao menu principal...");
                                 break;
                         }

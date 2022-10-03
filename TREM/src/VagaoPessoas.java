@@ -14,7 +14,6 @@ public class VagaoPessoas extends Vagao{
         super(identificadorVagao, maxPesoPessoas, gV);
         this.identificadorVagao = identificadorVagao;
         this.maxPesoPessoas = maxPesoPessoas;
-        GaragemVagao.getListaGaragemVagao().add(this);
     }
 
     public int getIdentificadorVagao() {
