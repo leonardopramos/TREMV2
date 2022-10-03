@@ -42,6 +42,12 @@ public class Menu {
                 case 1:
                     System.out.println("Para criar um trem, indique o identificador dele: ");
                     int identificadorTrem = sc.nextInt();
+
+                    if(p.tremExiste(identificadorTrem) == true){
+                        System.out.println("Já existe esse identificador de trem!!");
+                        continue;
+                    }
+                    
                     Trem t = new Trem(identificadorTrem, "sim");
                     System.out.println("***Lista de locomotivas na garagem***");
                     g.imprimeLocomotivasNaGaragem();
